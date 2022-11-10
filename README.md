@@ -4,8 +4,9 @@
 
 
 Problemas
+
 Al instalar tensorflow  como queria usar el entorno queras con visual studio code hubo problemas porque para hacer eso tenia que usar anaconda y resulta que da problemas instalar tensor flow si el nombre de tu carpeta tiene espacios y como mi nombre de usuario en la computadora es Daniel Saenz tiene espacio, despues de un buen rato encontré la solución en stackoverflow y era modificar la carpeta activation.bat para que no ocurriera este error, primero no sabia como modificar un archivo .bat, luego ya descubrí que era clic derecho editar, y luego no tenía permisos de directamente modificar ese archivo lo que hice fue copiarlo en escritorio, modificarlo ahi y despues remplazarlo en la carpeta del sistema.
-Para cargar los datos me daba error porque al parecer tenia que poner una r antes del directorio y con eso funcionó, aunque igual fue un error entrenar con una cantidad desproporcionada de imagenes de entrenamiento y prueba
+Para cargar los datos me daba error porque al parecer tenia que poner una r antes del directorio y con eso funcionó, aunque igual fue un error entrenar con una cantidad desproporcionada de imagenes de entrenamiento y prueba.
 
 Hubo demasiados errores durante las pruebas, que me falto alguna coma, que cargue mal la base de datos, entre otras.
 A continuación describiré algunos de ellos:
