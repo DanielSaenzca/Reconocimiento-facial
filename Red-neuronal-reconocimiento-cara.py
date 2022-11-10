@@ -22,8 +22,8 @@ train_data_dir = 'cara'
 validation_data_dir = 'cara'
 nb_train_samples = 500
 nb_validation_samples = 336
-epochs = 50
-batch_size = 16
+epochs = 100
+batch_size = 32
 
 if K.image_data_format() == 'primercanal':
     input_shape = (3, img_width, img_height)
