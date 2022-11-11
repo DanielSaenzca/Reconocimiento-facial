@@ -6,7 +6,6 @@ import tensorflow as tf
 from tensorflow import keras
 from keras import layers
 import matplotlib.pyplot as plt
-
 from keras.preprocessing.image import ImageDataGenerator
 from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D
@@ -30,27 +29,27 @@ if K.image_data_format() == 'primercanal':
 else:
     input_shape = (img_width, img_height, 3)
 
-model = Sequential()
-model.add(Conv2D(32, (3, 3), input_shape=input_shape))
-model.add(Activation('relu'))
-model.add(MaxPooling2D(pool_size=(2, 2)))
+model_new = Sequential()
+model_new.add(Conv2D(32, (3, 3), input_shape=input_shape))
+model_new.add(Activation('relu'))
+model_new.add(MaxPooling2D(pool_size=(2, 2)))
 
-model.add(Conv2D(32, (3, 3)))
-model.add(Activation('relu'))
-model.add(MaxPooling2D(pool_size=(2, 2)))
+model_new.add(Conv2D(32, (3, 3)))
+model_new.add(Activation('relu'))
+model_new.add(MaxPooling2D(pool_size=(2, 2)))
 
-model.add(Conv2D(64, (3, 3)))
-model.add(Activation('relu'))
-model.add(MaxPooling2D(pool_size=(2, 2)))
+model_new.add(Conv2D(64, (3, 3)))
+model_new.add(Activation('relu'))
+model_new.add(MaxPooling2D(pool_size=(2, 2)))
 
-model.add(Flatten())
-model.add(Dense(64))
-model.add(Activation('relu'))
-model.add(Dropout(0.5))
-model.add(Dense(1))
-model.add(Activation('sigmoid'))
+model_new.add(Flatten())
+model_new.add(Dense(64))
+model_new.add(Activation('relu'))
+model_new.add(Dropout(0.5))
+model_new.add(Dense(1))
+model_new.add(Activation('sigmoid'))
 
-model.compile(loss='binary_crossentropy',
+model_new.compile(loss='binary_crossentropy',
               optimizer='rmsprop',
               metrics=['accuracy'])
 
@@ -77,13 +76,13 @@ validation_generator = test_datagen.flow_from_directory(
     batch_size=batch_size,
     class_mode='binary')
 
-model.fit_generator(
+model_new.fit_generator(
     train_generator,
     steps_per_epoch=nb_train_samples // batch_size,
     epochs=epochs,
     validation_data=validation_generator,
     validation_steps=nb_validation_samples // batch_size)
 
-model.save_weights('primerintento.h5')
+model_new.save_weights('segundointento.h5')
 
 
