@@ -21,35 +21,39 @@ train_data_dir = 'cara'
 validation_data_dir = 'cara'
 nb_train_samples = 500
 nb_validation_samples = 336
-epochs = 50
+epochs = 100
 batch_size = 32
 
-if K.image_data_format() == 'primercanal':
+if K.image_data_format() == 'primercanal2':
     input_shape = (3, img_width, img_height)
 else:
     input_shape = (img_width, img_height, 3)
 
-model_new = Sequential()
-model_new.add(Conv2D(32, (3, 3), input_shape=input_shape))
-model_new.add(Activation('relu'))
-model_new.add(MaxPooling2D(pool_size=(2, 2)))
+model = Sequential()
+model.add(Conv2D(64, (3, 3), input_shape=input_shape))
+model.add(Activation('relu'))
+model.add(MaxPooling2D(pool_size=(2, 2)))
 
-model_new.add(Conv2D(32, (3, 3)))
-model_new.add(Activation('relu'))
-model_new.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(Conv2D(64, (3, 3)))
+model.add(Activation('relu'))
+model.add(MaxPooling2D(pool_size=(2, 2)))
 
-model_new.add(Conv2D(64, (3, 3)))
-model_new.add(Activation('relu'))
-model_new.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(Conv2D(64, (3, 3)))
+model.add(Activation('relu'))
+model.add(model_new.layers[3])
 
-model_new.add(Flatten())
-model_new.add(Dense(64))
-model_new.add(Activation('relu'))
-model_new.add(Dropout(0.5))
-model_new.add(Dense(1))
-model_new.add(Activation('sigmoid'))
+model.add(Flatten())
+model.add(Dense(64))
+model.add(Activation('relu'))
+model.add(Dropout(0.5))
+model.add(Dense(1))
+model.add(Activation('sigmoid'))
+model.summary()
+for layer in model.layers[:3]:
+    layer.trainable = False
 
-model_new.compile(loss='binary_crossentropy',
+
+model.compile(loss='binary_crossentropy',
               optimizer='rmsprop',
               metrics=['accuracy'])
 
@@ -75,13 +79,13 @@ validation_generator = test_datagen.flow_from_directory(
     batch_size=batch_size,
     class_mode='binary')
 
-model_new.fit_generator(
+model.fit_generator(
     train_generator,
     steps_per_epoch=nb_train_samples // batch_size,
     epochs=epochs,
     validation_data=validation_generator,
     validation_steps=nb_validation_samples // batch_size)
 
-model_new.save_weights('segundointento.h5')
+model_new.save_weights('tercerintento.h5')
 
 
