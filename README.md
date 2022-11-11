@@ -32,3 +32,5 @@ Posteriormente entrené con 10 épocas y las imagenes generadas estan en la carp
 Finalmente para hacer la red neuronal que reconociera mi rostro cargue el modelo que se entrenó con la base de datos de CelebA, y me dio un accuracy del 66% con 50 epcohs y un batch_size de 16.
 
 En el caso de mis imágenes busqué en mis fotos y recorté 100 fotos, las cuales puse solo mi cara y las puse del mismo tamaño que las de la base de datos de CelebA, 178x218 pixeles. Posteriormente aplique transformaciones como rotaciones y zoom a 50 de ellas generando así 1000 imágenes, de las cuales utilicé 500 como train y 336 como test, estas transformaciones las hice con el archivo Reconocimientofacial.py que lo que hace es crear 20 imagenes a partir de una haciendo las transformaciones antes descritas con el uso de ImageDataGenerator.
+
+Posteriormente cargué correctamente el modelo entrenado, debido a que anteriormente estaba entrenando una red de nuevo sin cargar el modelo ya entrenado con la base de datos CelebA y con 100 epochs y un batch_size  de 32 ubtuve una accuracy de 65%.
